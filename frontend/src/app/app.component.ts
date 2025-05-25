@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { AudioPlayerComponent } from './components/audio-player/audio-player.component';
 import { UrlInputComponent } from './components/url-input/url-input.component';
-import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',

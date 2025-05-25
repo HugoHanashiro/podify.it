@@ -7,13 +7,18 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AudioService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   urlEndpoint: string = `http://127.0.0.1:5000`
 
-  convertUrlToAudio(url: string): Observable<Blob> {
-    return this.http.post(`${this.urlEndpoint}/convert`, { url }, {
-      responseType: 'blob'
-    });
+  extractArticle(url: string) {
+    return this.http.post<{ title: string; author: string; article: string }>(
+      `${this.urlEndpoint}/extract`,
+      { url }
+    );
+  }
+
+  convertToAudio(articleText: string) {
+    return this.http.post(`${this.urlEndpoint}/audio`, { text: articleText }, { responseType: 'blob' });
   }
 }
