@@ -46,7 +46,7 @@ export class UrlInputComponent {
     });
 
     try {
-      // Step 1: Extract article from URL
+      // extraindo artigo da URL
       const extractResponse = await this.audioService.extractArticle(this.urlInput).toPromise();
 
       this.audioStateService.setTitle(extractResponse?.title ? extractResponse.title : "");
@@ -68,7 +68,7 @@ export class UrlInputComponent {
       });
 
 
-      // Step 2: Convert extracted text to audio
+      // convertendo em áudio
       const blob = await this.audioService.convertToAudio(articleText).toPromise();
       if (!blob) {
         throw new Error('Falha ao converter o conteúdo em áudio.');

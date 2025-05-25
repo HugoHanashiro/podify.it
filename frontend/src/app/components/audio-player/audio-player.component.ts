@@ -34,11 +34,8 @@ export class AudioPlayerComponent implements OnInit, OnDestroy {
     this.audioSubscription = this.audioStateService.audioSource$.subscribe(url => {
       if (url) {
         this.audioSource = url;
-
-        // Show the player when new audio is loaded
         this.isCollapsed = false;
-
-        // Need to wait for ViewChild to be initialized
+        
         setTimeout(() => {
           if (this.audioPlayerRef && this.audioPlayerRef.nativeElement) {
             this.audioPlayerRef.nativeElement.src = url;
@@ -83,7 +80,6 @@ export class AudioPlayerComponent implements OnInit, OnDestroy {
     const audio = this.audioPlayerRef.nativeElement;
     this.progress = (audio.currentTime / audio.duration) * 100;
 
-    // Update CSS custom property for WebKit browsers
     const progressBar = document.getElementById('progressBar') as HTMLInputElement;
     if (progressBar) {
       progressBar.style.setProperty('--progress', `${this.progress}%`);
@@ -98,8 +94,7 @@ export class AudioPlayerComponent implements OnInit, OnDestroy {
   setDuration() {
     this.updateProgress();
   }
-
-  // Safe getter for download URL
+  
   get downloadUrl(): string {
     return this.audioSource || '';
   }
