@@ -1,7 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Mukta:wght@200;300;400;500;600;700;800&display=swap');
 
-/* You can add global styles to this file, and also import other style files */
-/* Reset margin and padding */
 * {
     margin: 0;
     padding: 0;
@@ -21,15 +19,12 @@
     --font-family: 'Poppins', sans-serif;
 }
 
-/* Make the body take full height and center content */
 body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    /* Vertical centering */
     align-items: center;
-    /* Horizontal centering */
     background-color: #f4f4f4;
     position: relative;
     font-family: 'Roboto', sans-serif;
@@ -47,7 +42,6 @@ h1 {
     top: 20%;
     font-size: 5rem;
     font-weight: 800;
-    /* halfway between top (0%) and form (50%) */
 }
 
 
