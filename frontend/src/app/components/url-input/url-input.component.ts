@@ -48,14 +48,25 @@ export class UrlInputComponent {
     try {
       // Step 1: Extract article from URL
       const extractResponse = await this.audioService.extractArticle(this.urlInput).toPromise();
+
+      this.audioStateService.setTitle(extractResponse?.title ? extractResponse.title : "");
+      this.audioStateService.setAuthor(extractResponse?.author ? extractResponse.author : "");
+
       const articleText = extractResponse?.article;
 
       if (!articleText) {
         throw new Error('Não foi possível extrair o conteúdo do artigo.');
       }
-      Swal.update({
-        html: 'Conteúdo extraído com sucesso! Gerando o áudio...'
+      Swal.close();
+      Swal.fire({
+        title: 'Convertendo...',
+        html: 'Conteúdo extraído com sucesso! Gerando o áudio...',
+        allowOutsideClick: false,
+        didOpen: () => {
+          Swal.showLoading();
+        }
       });
+
 
       // Step 2: Convert extracted text to audio
       const blob = await this.audioService.convertToAudio(articleText).toPromise();

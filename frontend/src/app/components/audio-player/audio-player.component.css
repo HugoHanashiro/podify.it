@@ -1,15 +1,14 @@
-/* Style for the input */
 #urlInput {
     padding: 10px;
     font-size: 1rem;
 }
+
 .headerContainer {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-/* Wrapper for the entire audio player with toggle functionality */
 .audioPlayerWrapper {
     position: fixed;
     bottom: 0;
@@ -23,7 +22,6 @@
     transform: translateY(6.5rem);
 }
 
-/* Toggle button container */
 .toggleButtonContainer {
     position: relative;
     height: 0;
@@ -84,21 +82,39 @@
     color: var(--grey);
     font-size: 1rem;
 }
-.audioTitle {
+
+.articleTitle,
+.articleAuthor {
+  max-width: 20rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+}
+
+.articleDetails {
     flex: 1;
 }
+
+.articleTitle {
+    font-weight: bolder;
+    margin-bottom: 0.5rem;
+}
+
 .audioControls {
     flex: 2;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
+
 .audioControls .buttons {
     display: flex;
     gap: 1rem;
     margin-bottom: 0.5rem;
     align-items: center;
 }
+
 .audioControls button {
     background-color: var(--coal);
     border: 1px solid var(--black);
@@ -111,20 +127,25 @@
     align-items: center;
     justify-content: center;
 }
+
 .audioControls button:hover {
     background-color: var(--obsidian);
     color: var(--white);
 }
+
 #playPauseBtn {
     width: 3.5rem;
     height: 3.5rem;
 }
+
 .icons-lg{
     font-size: 3rem;
 }
+
 .icons-sm {
     font-size: 2rem;
 }
+
 #progressBar {
     width: 100%;
     height: 0.5rem;
@@ -135,21 +156,19 @@
     border-radius: 4px;
 }
 
-/* Track (the full bar background) */
 #progressBar::-webkit-slider-track {
     height: 0.5rem;
-    background: #666666; /* Color for unlistened part */
+    background: #666666;
     border-radius: 4px;
 }
 
 #progressBar::-moz-range-track {
     height: 0.5rem;
-    background: #666666; /* Color for unlistened part */
+    background: #666666;
     border-radius: 4px;
     border: none;
 }
 
-/* Progress (the listened part) */
 #progressBar::-webkit-slider-runnable-track {
     height: 0.5rem;
     background: linear-gradient(to right, var(--white) 0%, var(--white) var(--progress, 0%), #666666 var(--progress, 0%), #666666 100%);
@@ -158,11 +177,10 @@
 
 #progressBar::-moz-range-progress {
     height: 0.5rem;
-    background: var(--white); /* Color for listened part */
+    background: var(--white);
     border-radius: 4px;
 }
 
-/* Thumb (the slider handle) */
 #progressBar::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
@@ -187,7 +205,6 @@
     transition: all 0.2s ease;
 }
 
-/* Hover effects */
 #progressBar::-webkit-slider-thumb:hover {
     transform: scale(1.1);
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
@@ -198,7 +215,6 @@
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
 }
 
-/* Disabled state */
 #progressBar:disabled::-webkit-slider-thumb {
     background: #cccccc;
     border-color: #999999;
@@ -223,16 +239,15 @@
     font-weight: bold;
     transition: background-color 0.3s;
     border: 1px solid var(--black);
-    /* Center the download icon vertically */
     display: inline-flex;
     align-items: center;
     justify-content: center;
 }
 .downloadButton a:hover {
-    background-color: var(--black);
+    background-color: var(--obsidian);
     color: var(--white);
 }
-/* Make the download icon bigger */
+
 .downloadButton a i {
     font-size: 1.25rem;
 }

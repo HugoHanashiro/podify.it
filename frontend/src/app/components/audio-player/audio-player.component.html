@@ -8,7 +8,10 @@
     </div>
     <div class="audioPlayerContainer">
         <div class="audioPlayerContent">
-            <div class="audioTitle"></div>
+            <div class="articleDetails">
+                <p class="articleTitle">{{this.articleTitle}}</p>
+                <p class="articleAuthor">{{this.articleAuthor}}</p>
+            </div>
             <div class="audioControls">
                 <div class="buttons">
                     <button pButton (click)="rewind()" [disabled]="!audioSource">

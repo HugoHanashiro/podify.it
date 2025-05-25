@@ -13,26 +13,31 @@ import { CommonModule } from '@angular/common';
 })
 export class AudioPlayerComponent implements OnInit, OnDestroy {
   @ViewChild('audioPlayer') audioPlayerRef!: ElementRef<HTMLAudioElement>;
-  
+
   isPlaying = false;
   progress = 0;
   audioSource: string | null = null;
-  isCollapsed = false;
+  isCollapsed = true;
   private audioSubscription: Subscription | null = null;
+
+  articleTitle: string = ""
+  articleAuthor: string = ""
 
   constructor(
     private audioStateService: AudioStateService,
     private cdr: ChangeDetectorRef
-  ) {}
+  ) { }
 
   ngOnInit() {
+    this.audioStateService.title$.subscribe(title => this.articleTitle = title);
+    this.audioStateService.author$.subscribe(author => this.articleAuthor = author);
     this.audioSubscription = this.audioStateService.audioSource$.subscribe(url => {
       if (url) {
         this.audioSource = url;
-        
+
         // Show the player when new audio is loaded
         this.isCollapsed = false;
-       
+
         // Need to wait for ViewChild to be initialized
         setTimeout(() => {
           if (this.audioPlayerRef && this.audioPlayerRef.nativeElement) {
@@ -45,8 +50,6 @@ export class AudioPlayerComponent implements OnInit, OnDestroy {
         });
       }
     });
-
-    this.audioStateService.setAudioSource('assets/bad_apple_enhanced.mp3');
   }
 
   ngOnDestroy() {
@@ -79,7 +82,7 @@ export class AudioPlayerComponent implements OnInit, OnDestroy {
   updateProgress() {
     const audio = this.audioPlayerRef.nativeElement;
     this.progress = (audio.currentTime / audio.duration) * 100;
-    
+
     // Update CSS custom property for WebKit browsers
     const progressBar = document.getElementById('progressBar') as HTMLInputElement;
     if (progressBar) {
