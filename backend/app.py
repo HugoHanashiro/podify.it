@@ -11,7 +11,9 @@ import os
 import tempfile
 from dotenv import load_dotenv
 
-load_dotenv()
+load_dotenv(override=True)
+
+print(f"key: {os.getenv('OPENAI_API_KEY')}")
 
 client = OpenAI(api_key=os.getenv('OPENAI_API_KEY'))
 app = Flask(__name__)
