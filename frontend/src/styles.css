@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Mukta:wght@200;300;400;500;600;700;800&display=swap');
+
+/* You can add global styles to this file, and also import other style files */
+/* Reset margin and padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: inherit;
+}
+
+:root {
+    --grey: #eaeaea;
+    --coal: #333333;
+}
+
+:root {
+    --font-family: 'Poppins', sans-serif;
+}
+
+/* Make the body take full height and center content */
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* Vertical centering */
+    align-items: center;
+    /* Horizontal centering */
+    background-color: #f4f4f4;
+    position: relative;
+    font-family: 'Roboto', sans-serif;
+    background-image: linear-gradient(rgba(255, 255, 255, 0.93), rgba(234, 234, 234, 0.99)),
+        url('./assets/pattern.png');
+    background-repeat: repeat;
+    background-position: top left;
+    background-size: auto;
+}
+
+h1 {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 20%;
+    font-size: 5rem;
+    font-weight: 800;
+    /* halfway between top (0%) and form (50%) */
+}
+
+
+@media only screen and (max-width: 767px) {
+    h1 {
+        font-size: 4rem;
+        top: 20%;
+    }
+}

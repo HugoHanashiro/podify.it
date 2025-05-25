@@ -1,0 +1,20 @@
+<div class="audioPlayerContainer">
+    <div class="audioPlayerContent">
+        <div class="audioTitle"></div>
+
+        <div class="audioControls">
+            <div class="buttons">
+                <button pButton (click)="rewind()" [disabled]="!audioSource"><i class="pi pi-backward"></i></button>
+                <button pButton (click)="togglePlay()" id="playPauseBtn" [disabled]="!audioSource"><i [class]="isPlaying ? 'pi pi-pause' : 'pi pi-play'"></i></button>
+                <button pButton (click)="forward()" [disabled]="!audioSource"><i class="pi pi-forward"></i></button>
+            </div>
+            <input type="range" id="progressBar" [value]="progress" (input)="seek($event)" [disabled]="!audioSource">
+        </div>
+
+        <div class="downloadButton">
+            <a *ngIf="downloadUrl" [href]="downloadUrl" download><i class="pi pi-download"></i></a>
+        </div>
+    </div>
+
+    <audio #audioPlayer (timeupdate)="updateProgress()" (loadedmetadata)="setDuration()"></audio>
+</div>

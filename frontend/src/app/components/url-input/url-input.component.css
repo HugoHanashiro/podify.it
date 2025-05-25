@@ -1,0 +1,42 @@
+/* Style for the input and button container */
+.textFieldContainer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+}
+
+.textFieldContainer input {
+    width: 25rem;
+    padding: 5px;
+}
+
+/* Style for the button */
+button {
+    padding: 10px 15px;
+    font-size: 1rem;
+    cursor: pointer;
+    background-color: black;
+    border-color: #eaeaea;
+    color: #eaeaea;
+}
+
+@media only screen and (max-width: 767px) {
+    .textFieldContainer input {
+        width: 20rem;
+    }
+
+    button {
+        padding: 10px 15px;
+        font-size: .9rem;
+        cursor: pointer;
+        background-color: black;
+        border-color: #eaeaea;
+        color: #eaeaea;
+    }
+
+    .button-text {
+        display: none;
+    }
+}
