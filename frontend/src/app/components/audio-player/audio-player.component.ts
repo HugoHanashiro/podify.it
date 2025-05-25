@@ -45,6 +45,8 @@ export class AudioPlayerComponent implements OnInit, OnDestroy {
         });
       }
     });
+
+    this.audioStateService.setAudioSource('assets/bad_apple_enhanced.mp3');
   }
 
   ngOnDestroy() {
@@ -67,16 +69,22 @@ export class AudioPlayerComponent implements OnInit, OnDestroy {
   }
 
   rewind() {
-    this.audioPlayerRef.nativeElement.currentTime -= 15;
+    this.audioPlayerRef.nativeElement.currentTime -= 10;
   }
 
   forward() {
-    this.audioPlayerRef.nativeElement.currentTime += 15;
+    this.audioPlayerRef.nativeElement.currentTime += 10;
   }
 
   updateProgress() {
     const audio = this.audioPlayerRef.nativeElement;
     this.progress = (audio.currentTime / audio.duration) * 100;
+    
+    // Update CSS custom property for WebKit browsers
+    const progressBar = document.getElementById('progressBar') as HTMLInputElement;
+    if (progressBar) {
+      progressBar.style.setProperty('--progress', `${this.progress}%`);
+    }
   }
 
   seek(event: any) {

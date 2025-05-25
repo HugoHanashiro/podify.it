@@ -1,7 +1,9 @@
 <div class="audioPlayerWrapper" [class.collapsed]="isCollapsed">
     <div class="toggleButtonContainer">
         <button class="toggleButton" (click)="togglePlayer()" pButton>
-            <i [class]="isCollapsed ? 'pi pi-chevron-up' : 'pi pi-chevron-down'"></i>
+            <span class="material-icons">
+                {{ isCollapsed ? 'expand_less' : 'expand_more' }}
+            </span>
         </button>
     </div>
     <div class="audioPlayerContainer">
@@ -9,14 +11,24 @@
             <div class="audioTitle"></div>
             <div class="audioControls">
                 <div class="buttons">
-                    <button pButton (click)="rewind()" [disabled]="!audioSource"><i class="pi pi-backward"></i></button>
-                    <button pButton (click)="togglePlay()" id="playPauseBtn" [disabled]="!audioSource"><i [class]="isPlaying ? 'pi pi-pause' : 'pi pi-play'"></i></button>
-                    <button pButton (click)="forward()" [disabled]="!audioSource"><i class="pi pi-forward"></i></button>
+                    <button pButton (click)="rewind()" [disabled]="!audioSource">
+                        <span class="material-icons icons-sm">replay_10</span>
+                    </button>
+                    <button pButton (click)="togglePlay()" id="playPauseBtn" [disabled]="!audioSource">
+                        <span class="material-icons icons-lg">
+                            {{ isPlaying ? 'pause' : 'play_arrow' }}
+                        </span>
+                    </button>
+                    <button pButton (click)="forward()" [disabled]="!audioSource">
+                        <span class="material-icons icons-sm">forward_10</span>
+                    </button>
                 </div>
                 <input type="range" id="progressBar" [value]="progress" (input)="seek($event)" [disabled]="!audioSource">
             </div>
             <div class="downloadButton">
-                <a *ngIf="downloadUrl" [href]="downloadUrl" download><i class="pi pi-download"></i></a>
+                <a *ngIf="downloadUrl" [href]="downloadUrl" download>
+                    <span class="material-icons">download</span>
+                </a>
             </div>
         </div>
         <audio #audioPlayer (timeupdate)="updateProgress()" (loadedmetadata)="setDuration()"></audio>
