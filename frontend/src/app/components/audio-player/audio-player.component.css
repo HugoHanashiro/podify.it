@@ -3,20 +3,76 @@
     padding: 10px;
     font-size: 1rem;
 }
-
 .headerContainer {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.audioPlayerContainer {
+/* Wrapper for the entire audio player with toggle functionality */
+.audioPlayerWrapper {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+    transition: transform 0.3s ease-in-out;
+    z-index: 1000;
+}
+
+.audioPlayerWrapper.collapsed {
+    transform: translateY(6.5rem);
+}
+
+/* Toggle button container */
+.toggleButtonContainer {
+    position: relative;
+    height: 0;
+    z-index: 1001;
+}
+
+.toggleButton {
     position: absolute;
+    top: -2rem;
+    right: 2rem;
+    background-color: #333333 !important;
+    border: 2px solid #000000 !important;
+    border-bottom: none !important;
+    border-radius: 0.5rem 0.5rem 0 0 !important;
+    width: 3rem !important;
+    height: 2rem !important;
+    color: #eaeaea !important;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+}
+
+.toggleButton:hover {
+    background-color: #555555 !important;
+}
+
+.toggleButton i {
+    font-size: 1.25rem;
+}
+
+.audioPlayerContainer {
     background-color: #333333;
     width: 100vw;
     height: 6.5rem;
-    bottom: 0px;
     border-top: 2px solid #000000;
+    position: relative;
+}
+
+.audioPlayerContainer::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    right: 2rem;
+    width: 3rem;
+    height: 2px;
+    background-color: #333333;
+    z-index: 1;
 }
 
 .audioPlayerContent {
@@ -28,25 +84,21 @@
     color: #eaeaea;
     font-size: 1rem;
 }
-
 .audioTitle {
     flex: 1;
 }
-
 .audioControls {
     flex: 2;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-
 .audioControls .buttons {
     display: flex;
     gap: 1rem;
     margin-bottom: 0.5rem;
     align-items: center;
 }
-
 .audioControls button {
     background-color: #ffffff;
     border: 1px solid #000000;
@@ -59,34 +111,27 @@
     align-items: center;
     justify-content: center;
 }
-
 .audioControls button:hover {
     background-color: #000000;
     color: #ffffff;
 }
-
 .audioControls button i {
     font-size: 1.25rem;
 }
-
 #playPauseBtn {
     width: 3.5rem;
     height: 3.5rem;
 }
-
 #playPauseBtn i {
     font-size: 1.5rem;
 }
-
 #progressBar {
     width: 100%;
 }
-
 .downloadButton {
     flex: 1;
     text-align: right;
 }
-
 .downloadButton a {
     background-color: #ffffff;
     color: #000000;
@@ -101,12 +146,10 @@
     align-items: center;
     justify-content: center;
 }
-
 .downloadButton a:hover {
     background-color: #000000;
     color: #ffffff;
 }
-
 /* Make the download icon bigger */
 .downloadButton a i {
     font-size: 1.25rem;

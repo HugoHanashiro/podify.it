@@ -13,9 +13,11 @@ import { CommonModule } from '@angular/common';
 })
 export class AudioPlayerComponent implements OnInit, OnDestroy {
   @ViewChild('audioPlayer') audioPlayerRef!: ElementRef<HTMLAudioElement>;
+  
   isPlaying = false;
   progress = 0;
   audioSource: string | null = null;
+  isCollapsed = false;
   private audioSubscription: Subscription | null = null;
 
   constructor(
@@ -28,6 +30,9 @@ export class AudioPlayerComponent implements OnInit, OnDestroy {
       if (url) {
         this.audioSource = url;
         
+        // Show the player when new audio is loaded
+        this.isCollapsed = false;
+       
         // Need to wait for ViewChild to be initialized
         setTimeout(() => {
           if (this.audioPlayerRef && this.audioPlayerRef.nativeElement) {
@@ -44,6 +49,10 @@ export class AudioPlayerComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.audioSubscription?.unsubscribe();
+  }
+
+  togglePlayer() {
+    this.isCollapsed = !this.isCollapsed;
   }
 
   togglePlay() {
