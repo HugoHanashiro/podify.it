@@ -13,11 +13,9 @@ from dotenv import load_dotenv
 
 load_dotenv(override=True)
 
-print(f"key: {os.getenv('OPENAI_API_KEY')}")
-
 client = OpenAI(api_key=os.getenv('OPENAI_API_KEY'))
 app = Flask(__name__)
-CORS(app, origins=["http://localhost:4200"])
+CORS(app, supports_credentials=True)
 
 MAX_TOKENS_TEXT = 128000
 MODEL_TEXT = "gpt-4.1-mini"
@@ -155,4 +153,4 @@ def article_to_audio():
         return jsonify({"error": str(e)}), 500
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, host="0.0.0.0", port=5000)
