@@ -70,6 +70,12 @@ docker run -p 5000:5000 -p 4200:4200 podify.it
 
 ---
 
+### 🌐 Acessando o aplicativo
+
+Com o container Docker sendo executado, basta acessar a url "http://localhost:4200/" e começar a usar.
+
+---
+
 ## 📄 Licença
 
 Este projeto está licenciado sob a licença MIT. Veja o arquivo [LICENSE](./LICENSE) para mais detalhes.
